@@ -1,16 +1,18 @@
 
 //Logica de negocio para el registro y login de usuarios
-
+import { crearUsuario, buscarPorEmail } from "../Models/usuario.model.js";
 //Registro
 export const registrar = async(req,res)=>{
 
     try{
-
+        console.log(req.body);
         const {
             nombre,
             apellido,
             email,
-            password
+            password,
+            confirmPassword
+
         } = req.body;
 
 
@@ -20,13 +22,18 @@ export const registrar = async(req,res)=>{
 
         if(existe){
 
-            return res.status(400).json({
-                mensaje:"El usuario ya existe"
+            return res.render("login/registro", {
+            mensaje: "El correo ya está registrado."
             });
 
         }
+        //confirmar el pasword
+        if(password !== confirmPassword){
+        return res.render("login/registro", {
+        mensaje: "Las contraseñas no coinciden"
+        });
 
-
+}
 
         await crearUsuario({
             nombre,
@@ -35,16 +42,18 @@ export const registrar = async(req,res)=>{
             password
         });
 
-
-
-        res.json({
-            mensaje:"Usuario registrado correctamente"
-        });
+        return res.redirect("/usuarios/login")
+            
+     
 
 
 
     }catch(error){
 
+
+        console.log("ERROR REGISTRO:");
+        console.log(error);
+        
         res.status(500).json({
             mensaje:"Error del servidor"
         });
@@ -66,33 +75,39 @@ export const login = async(req,res)=>{
 
         if(!usuario){
 
-            return res.status(404).send("Usuario no encontrado");
-
+            return res.render("login/login", {
+                mensaje: "Usuario no encontrado."
+            });
         }
 
 
         if(usuario.password !== password){
 
-            return res.status(401).send("Contraseña incorrecta");
+            return res.render("login/login", {
+                mensaje: "Contraseña o email incorrecto."
+            });
 
         }
 
-        //Guardar el usuario en la sesión
+        //Crear la sesion
         req.session.usuario = {
             id_usuario: usuario.id_usuario,
             nombre: usuario.nombre,
             email: usuario.email
         };
 
-
+        
         res.redirect("/tareas");
 
 
     }catch(error){
 
+        
         console.log(error);
 
-        res.status(500).send("Error del servidor");
+        res.status(500).json({
+        mensaje:"Error del servidor"
+        });
 
     }
 

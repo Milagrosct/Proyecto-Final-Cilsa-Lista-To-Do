@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+</head>
+
+<body>
+
+    <h1>Iniciar sesión</h1>
+    
+  <%if (mensaje){%>
+            <div class="alert alert-danger">
+                <%=mensaje%>
+            </div>
+        <%}%>
+
+    <form action="/usuarios/login" method="POST">
+
+        <label>Email:</label>
+        <input 
+            type="email" name="email" required>
+
+      
+        
+
+        <br>
+
+
+        <label>Contraseña:</label>
+        <input type="password" name="password" required>
+        
+        
+
+        <br>
+
+
+        <button type="submit">
+            Ingresar
+        </button>
+
+        
+
+    </form>
+
+
+    <p>
+        ¿No tenés cuenta?
+        <a href="/usuarios/registro">
+            Registrate
+        </a>
+    </p>
+
+
+</body>
+</html>

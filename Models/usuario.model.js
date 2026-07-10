@@ -12,7 +12,7 @@ import db from "../config/db.js";
 
 
 //crear usuario
-export const crearUsuario = async (usuario)=>{
+export const crearUsuario = async (usuario) => {
 
     const {
         nombre,
@@ -28,7 +28,8 @@ export const crearUsuario = async (usuario)=>{
         VALUES (?, ?, ?, ?)
     `;
 
-
+    console.log("Llega al modelo:");
+    console.log(usuario);
     const [resultado] = await db.execute(sql,[
         nombre,
         apellido,

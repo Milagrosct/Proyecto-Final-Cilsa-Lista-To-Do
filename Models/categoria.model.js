@@ -4,8 +4,7 @@ import db from "../config/db.js";
 export const obtenerCategorias = async (id_usuario) => {
 
     const sql = `
-        SELECT *
-        FROM categorias
+        SELECT * FROM categorias
         WHERE id_usuario = ?
         ORDER BY nombre
     `;
@@ -15,9 +14,17 @@ export const obtenerCategorias = async (id_usuario) => {
     return rows;
 };
 
-
+//Obtener categoria por id
+export const obtenerCategoriaPorId = async (id_categoria) => {
+    const sql = "SELECT * FROM categorias WHERE id_categoria = ?";
+    const [rows] = await db.execute(sql, [id_categoria]);
+    return rows[0];
+}
 // Crear categoría
-export const crearCategoria = async (nombre, id_usuario) => {
+export const crearCategoria = async (categoria) => {
+    const {
+        nombre, id_usuario
+    } = categoria;
 
     const sql = `
         INSERT INTO categorias (nombre, id_usuario)

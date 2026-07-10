@@ -1,5 +1,6 @@
 import {
     obtenerCategorias,
+    obtenerCategoriaPorId,
     crearCategoria,
     editarCategoria,
     eliminarCategoria
@@ -11,12 +12,12 @@ export const listar = async (req, res) => {
 
     try {
 
-        // Por ahora usamos un usuario fijo.
-        // Más adelante lo reemplazaremos por el usuario logueado.
-        const categorias = await obtenerCategorias(1);
-
-        res.json(categorias);
-
+        const id_usuario = req.session.usuario.id_usuario;
+        const categorias = await obtenerCategorias(id_usuario);
+        res.render("categorias/index", {
+            categorias
+        });
+        
     } catch (error) {
 
         console.log(error);
@@ -39,10 +40,14 @@ export const crear = async (req, res) => {
 
         await crearCategoria(nombre, 1);
 
-        res.json({
-            mensaje: "Categoría creada correctamente"
-        });
+       res.redirect("/categorias");
 
+        if(!nombre){
+                return res.status(400).json({
+        mensaje: "Ingrese un nombre para la categoría"
+    });
+
+        }
     } catch (error) {
 
         console.log(error);

@@ -1,0 +1,70 @@
+
+
+<h1>
+Hola <%= usuario.nombre %> 👋
+</h1>
+
+<h2>Mis tareas</h2>
+
+
+<% if(tareas.length === 0){ %>
+
+    <p>No tenés tareas todavía</p>
+
+<% } else { %>
+
+    <ul>
+
+        <% tareas.forEach(tarea => { %>
+
+            <li>
+                <%= tarea.nombre %>
+            </li>
+
+        <% }) %>
+
+    </ul>
+
+<% } %>
+
+
+<h2>Crear nueva tarea</h2>
+
+<form action="/tareas" method="POST">
+
+    <div>
+        <label>Nombre:</label>
+        <input 
+            type="text" 
+            name="nombre" 
+            required
+        >
+    </div>
+
+
+    <div>
+        <label>Descripción:</label>
+        <textarea name="descripcion"></textarea>
+    </div>
+
+
+    <div>
+        <label>Categoría:</label>
+
+        <select name="id_categoria" required>
+
+            <option value="">Seleccione</option>
+   
+
+        </select>
+
+    </div>
+
+
+    <button type="submit">
+        Crear tarea
+    </button>
+
+</form>
+
+
