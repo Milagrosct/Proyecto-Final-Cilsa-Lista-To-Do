@@ -38,7 +38,7 @@ export const mostrarTareas = async(req,res)=>{
 
         const categorias = await obtenerCategorias(id_usuario);
 
-        res.render("tareas",{
+        res.render("tareas/index",{
             tareas,
             categorias,
             usuario:req.session.usuario,
