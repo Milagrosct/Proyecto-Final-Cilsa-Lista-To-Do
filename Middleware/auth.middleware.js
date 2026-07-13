@@ -6,16 +6,12 @@
     3 Si existe → dejar pasar.
     4 Si no existe → bloquear. */
 
-    export const authMiddleware = (req, res, next) => {
-        //verificar si existe un usuario en la sesion
-        if(!req.session.usuario) {
-            return res.status(401).json({ //401 significa no autorizado
-                mensaje: "Debe iniciar sesion para acceder."
-            });
-        }
-        //si existe usuario 
-        req.user = req.session.usuario; //obtiene el usuario logueado de la sesion y lo guarda en req.user para que pueda ser usado en el controlador
+export const authMiddleware = (req,res,next)=>{
 
-        //continuar al controlador
-        next();
-    };
+    if(!req.session.usuario){
+        return res.redirect("/usuarios/login");
+    }
+
+    next();
+
+}

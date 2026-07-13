@@ -5,7 +5,8 @@ import express from "express";
 
 import {
     registrar,
-    login
+    login,
+    logout
 } from "../controllers/usuario.controller.js";
 
 
@@ -27,6 +28,6 @@ router.get("/login", (req, res) => {
 //Recibir datos del registro/login
 router.post("/registro", registrar);
 router.post("/login", login);
-
+router.get("/logout", logout);
 
 export default router;

@@ -14,12 +14,21 @@ export const obtenerCategorias = async (id_usuario) => {
     return rows;
 };
 
+export const buscarCategoria = async(nombre, id_usuario) => {
+    const sql = "SELECT * FROM categorias where nombre = ? AND id_usuario = ? ";
+    const [rows] = await db.execute(sql, [
+        nombre, 
+        id_usuario
+    ]);
+    return rows[0];
+}
 //Obtener categoria por id
 export const obtenerCategoriaPorId = async (id_categoria) => {
     const sql = "SELECT * FROM categorias WHERE id_categoria = ?";
     const [rows] = await db.execute(sql, [id_categoria]);
     return rows[0];
 }
+
 // Crear categoría
 export const crearCategoria = async (categoria) => {
     const {

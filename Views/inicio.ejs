@@ -7,7 +7,7 @@
 </head>
 
 <body>
-
+<%- include("partials/sidebar") %>
     <h1>Lista de Tareas</h1>
 
     <p>
@@ -23,7 +23,20 @@
     <a href="/usuarios/registro">
         Registrarse
     </a>
+    
+<div class="resumen">
 
+    <div class="card-resumen">
+        <h2><%= pendientes %></h2>
+        <p>Tareas pendientes</p>
+    </div>
+
+    <div class="card-resumen">
+        <h2><%= completadas %></h2>
+        <p>Tareas completadas</p>
+    </div>
+
+</div>
 
 </body>
 </html>

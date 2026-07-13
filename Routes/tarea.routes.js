@@ -1,10 +1,10 @@
 import express from "express";
 import {
     mostrarTareas,
-   /*  obtenerPorId, */
-    crear
-   /*  editar,
-    eliminar */
+    crear,
+    editar,
+    eliminar,
+    cambiarEstado 
 } from "../controllers/tarea.controller.js";
 
 import { authMiddleware } from "../Middleware/auth.middleware.js";
@@ -13,13 +13,9 @@ const router = express.Router();
 //Ruta tareas que necesitan un usuario logueado para poder acceder a ellas
 
 router.get("/", authMiddleware, mostrarTareas);
-
-/* router.get("/:id", authMiddleware, obtenerPorId); */
-
 router.post("/", authMiddleware, crear);
-
-/* router.put("/:id", authMiddleware, editar); */
-
-/* router.delete("/:id", authMiddleware, eliminar); */
+router.post("/editar/:id", authMiddleware, editar);
+router.post("/estado/:id", authMiddleware, cambiarEstado);
+router.post("/eliminar/:id", authMiddleware, eliminar);
 
 export default router;

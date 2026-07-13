@@ -1,0 +1,104 @@
+body{
+    padding: 0;
+}
+.prioridad {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+
+.prioridad.alta {
+    background-color: #dc3545 !important; 
+    color: white;
+}
+
+
+.prioridad.media {
+    background-color: #ffc107;
+    color: black;
+}
+
+
+.prioridad.baja {
+    background-color: #28a745;
+    color: white;
+}
+
+
+
+
+
+/* cards */
+
+.contenedor-tareas {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px !important;
+    padding: 40px;
+}
+
+
+.card-tarea {
+    width: 400px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.barra-prioridad{
+    height:8px;
+}
+
+.contenido-tarea{
+    padding:20px;
+}
+
+
+/* Color de la barra */
+
+.card-tarea.alta .barra-prioridad{
+    background:red;
+}
+
+
+.card-tarea.media .barra-prioridad{
+    background:orange;
+}
+
+
+.card-tarea.baja .barra-prioridad{
+    background:green;
+}
+
+
+
+/* Etiqueta prioridad */
+
+.prioridad{
+    padding:5px 15px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+
+.prioridad.alta{
+    background:red;
+    color:white;
+}
+
+
+.prioridad.media{
+    background:yellow;
+    color:black;
+}
+
+
+.prioridad.baja{
+    background:green;
+    color:white;
+}

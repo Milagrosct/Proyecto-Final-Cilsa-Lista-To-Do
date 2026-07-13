@@ -7,6 +7,7 @@ import categoriaRoutes from "./Routes/categoria.routes.js";
 import tareaRoutes from "./Routes/tarea.routes.js";
 import path from "path"; 
 import { fileURLToPath } from "url";
+import inicioRoutes from "./Routes/inicio.routes.js";
 
 dotenv.config();
 const server = express();
@@ -29,18 +30,15 @@ server.use(session({
 // Middleware para parsear el cuerpo de las solicitudes
 server.use(express.urlencoded({ extended: true }));
 
-//Ruta principal
-server.get("/", (req, res) => {
-  res.render("inicio");
-});
 
 // Configuración de EJS
 server.set("view engine", "ejs"); //(Para poder renderizar las vistas con EJS)
 server.set("views", path.join(__dirname, "Views")); 
 
 // Rutas
+server.use("/", inicioRoutes);
 server.use("/usuarios", usuarioRoutes);
-server.use("/api/categorias", categoriaRoutes);
+server.use("/categorias", categoriaRoutes);
 server.use("/tareas", tareaRoutes);
 
 //Iniciar el servidor

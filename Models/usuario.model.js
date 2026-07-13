@@ -59,3 +59,14 @@ export const buscarPorEmail = async(email)=>{
     return usuario[0];
 
 };
+
+//Buscar usuario x mail
+export const buscarUsuarioPorEmail = async(email)=> {
+    const sql = `
+            SELECT id_usuario, nombre, apellido, email
+            FROM usuarios
+            WHERE email = ?
+    `;
+    const [rows] = await db.execute(sql, [email]);
+    return rows[0];
+};

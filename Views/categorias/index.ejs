@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias</title>
+</head>
+<body>
+    <!-- Esto es la barra lateral -->
+    <%- include("../partials/sidebar") %>
+ <!--    const PRESET_COLORS = [
+  '#6366f1', '#22d3ee', '#f59e0b', '#ef4444', '#22c55e',
+  '#ec4899', '#8b5cf6', '#06b6d4', '#84cc16', '#f97316',
+  '#14b8a6', '#a78bfa', '#fb7185', '#34d399', '#fbbf24',
+]; -->
+    <h1>Categorias</h1>
+    <p>Organiza tus tareas con categorias personalizadas</p>
+
+    <form action="/categorias" method="POST">
+
+        <label>Nombre:</label>
+        <input type="text" name="nombre" placeholder="Ej: Trabajo" required>
+
+        <!-- <label>Color:</label>
+        <input type="text" name="color" required> -->
+        <br>
+
+
+        <button type="submit">
+            Crear categoria
+        </button>
+
+    </form>
+      <% if(mensaje){ %>
+    <p><%= mensaje %></p>
+    <% } %>
+    <hr>
+  
+
+    <h2>Lista de categorias</h2>
+
+    <% if (categorias.length ===0) { %>
+        <p>No hay categorias creadas</p>
+    <%} else { %>
+        <ul>
+            <% categorias.forEach(categoria => { %>
+                
+            <li>
+                <%= categoria.nombre %>
+            </li>
+            <%  }); %>
+        </ul>
+      
+    <% } %>
+
+</body>
+</html>

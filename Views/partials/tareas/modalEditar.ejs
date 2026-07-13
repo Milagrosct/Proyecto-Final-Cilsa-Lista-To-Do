@@ -1,0 +1,122 @@
+<div class="modal fade" id="editar<%= tarea.id_tarea %>" tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Editar tarea
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <form action="/tareas/editar/<%= tarea.id_tarea %>" method="POST">
+
+                <div class="modal-body">
+
+                    <label>Nombre</label>
+
+                    <input
+                        type="text"
+                        name="nombre"
+                        class="form-control"
+                        value="<%= tarea.nombre %>">
+
+                    <label class="mt-3">Descripción</label>
+
+                    <textarea
+                        name="descripcion"
+                        class="form-control"><%= tarea.descripcion %></textarea>
+
+                    <label class="mt-3">Categoría</label>
+
+                    <select
+                        name="id_categoria"
+                        class="form-select">
+
+                        <% categorias.forEach(categoria => { %>
+
+                        <option
+                            value="<%= categoria.id_categoria %>"
+                            <%= categoria.id_categoria == tarea.id_categoria ? "selected" : "" %>>
+
+                            <%= categoria.nombre %>
+
+                        </option>
+
+                        <% }) %>
+
+                    </select>
+
+                    <label class="mt-3">Prioridad</label>
+
+                    <select
+                        name="prioridad"
+                        class="form-select">
+
+                        <option value="Baja" <%= tarea.prioridad=="Baja"?"selected":"" %>>
+                            Baja
+                        </option>
+
+                        <option value="Media" <%= tarea.prioridad=="Media"?"selected":"" %>>
+                            Media
+                        </option>
+
+                        <option value="Alta" <%= tarea.prioridad=="Alta"?"selected":"" %>>
+                            Alta
+                        </option>
+
+                    </select>
+
+                    <label class="mt-3">Fecha inicio</label>
+
+                    <input
+                        type="datetime-local"
+                        name="fecha_inicio"
+                        class="form-control"
+                        value="<%= tarea.fecha_inicio ? new Date(tarea.fecha_inicio).toISOString().slice(0,16) : '' %>">
+
+                    <label class="mt-3">Fecha vencimiento</label>
+
+                    <input
+                        type="datetime-local"
+                        name="fecha_vencimiento"
+                        class="form-control"
+                        value="<%= tarea.fecha_vencimiento ? new Date(tarea.fecha_vencimiento).toISOString().slice(0,16) : '' %>">
+
+                </div>
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-success">
+                        Guardar
+                    </button>
+
+                </div>
+
+            </form>
+
+        
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,88 @@
+<!-- Mostrar tareas -->
+<!-- CADA CARD -->
+
+<div class="card-tarea <%= tarea.prioridad.toLowerCase() %>">
+
+    <div class="barra-prioridad"></div>
+
+    <div class="contenido-tarea">
+
+        <h3><%= tarea.nombre %></h3>
+
+        <p><%= tarea.descripcion || "Sin descripción" %></p>
+
+        <small>
+            Categoría: <%= tarea.categoria || "Sin categoría" %>
+        </small>
+
+        <hr>
+
+        <!-- Estado -->
+        <form action="/tareas/estado/<%= tarea.id_tarea %>" method="POST" class="mb-3">
+            <select class="form-select" name="id_estado" onchange="this.form.submit()">
+                <option value="1" <%= tarea.id_estado == 1 ? "selected" : "" %>>Pendiente</option>
+                <option value="2" <%= tarea.id_estado == 2 ? "selected" : "" %>>En progreso</option>
+                <option value="3" <%= tarea.id_estado == 3 ? "selected" : "" %>>Completada</option>
+            </select>
+        </form>
+
+        <!-- Prioridad -->
+        <span class="prioridad <%= tarea.prioridad.toLowerCase() %>">
+            <%= tarea.prioridad %>
+        </span>
+        <!-- FECHAS -->
+        <p class="mt-3">
+            <strong>Inicio:</strong>
+            <%= tarea.fecha_inicio
+                ? new Date(tarea.fecha_inicio).toLocaleString("es-AR",{
+                    day:"2-digit",
+                    month:"2-digit",
+                    year:"2-digit",
+                    hour:"2-digit",
+                    minute:"2-digit"
+                })
+                : "-" %>
+        </p>
+
+        <p>
+            <strong>Vence:</strong>
+            <%= tarea.fecha_vencimiento
+                ? new Date(tarea.fecha_vencimiento).toLocaleString("es-AR",{
+                    day:"2-digit",
+                    month:"2-digit",
+                    year:"2-digit",
+                    hour:"2-digit",
+                    minute:"2-digit"
+                })
+                : "-" %>
+        </p>
+     
+        <% if(tarea.id_creador == usuario.id_usuario){ %>
+
+        <div class="d-flex gap-2 mt-3">
+            <!-- BOTON EDITAR -->
+            <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#editar<%= tarea.id_tarea %>">
+                ✏️ Editar
+            </button>
+           <!--  ELIMINAR -->
+            <form action="/tareas/eliminar/<%= tarea.id_tarea %>" method="POST">
+                <button
+                    type="submit"
+                    class="btn btn-danger"
+                    onclick="return confirm('¿Seguro que querés eliminar esta tarea?')">
+                    🗑 Eliminar
+                </button>
+            </form>
+
+        </div>
+
+        <% } %>
+
+    </div>
+
+</div>
+<!-- MODAL DE EDITAR (modalEditar.ejs)-->
+<%- include("modalEditar", { tarea, categorias, usuario }) %>
