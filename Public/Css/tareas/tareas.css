@@ -108,3 +108,14 @@ body{
     background:green;
     color:white;
 }
+
+/* Etiqueta categoria */
+.categoria{
+    display:inline-block;
+    padding:5px 12px;
+    border:1px solid white;
+    border-radius:50px;
+    color:white;
+    font-size:0.85rem;
+    background:transparent;
+}

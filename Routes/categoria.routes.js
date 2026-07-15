@@ -13,8 +13,8 @@ router.get("/", listar);
 
 router.post("/", crear);
 
-router.put("/:id", editar);
+router.post("/editar/:id", editar);
 
-router.delete("/:id", eliminar);
+router.post("/eliminar/:id", eliminar);
 
 export default router;

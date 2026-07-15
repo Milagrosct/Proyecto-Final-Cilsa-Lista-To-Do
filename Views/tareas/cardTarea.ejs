@@ -11,9 +11,7 @@
 
         <p><%= tarea.descripcion || "Sin descripción" %></p>
 
-        <small>
-            <%= tarea.categoria || "Sin categoría" %>
-        </small>
+       
 
         <hr>
 
@@ -26,10 +24,18 @@
             </select>
         </form>
         
-        <!-- Prioridad -->
-        <span class="prioridad <%= tarea.prioridad.toLowerCase() %>">
-            <%= tarea.prioridad %>
-        </span>
+      
+    <div class="d-flex gap-2 align-items-center mb-3">
+<!-- categoria -->
+    <span class="categoria">
+        <%= tarea.categoria || "Sin categoría" %>
+    </span>
+  <!-- Prioridad -->
+    <span class="prioridad <%= tarea.prioridad.toLowerCase() %>">
+        <%= tarea.prioridad %>
+    </span>
+</div>
+
         <!-- FECHAS -->
          
         <p class="mt-3">

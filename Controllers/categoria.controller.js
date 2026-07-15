@@ -1,6 +1,5 @@
 import {
     obtenerCategorias,
-    obtenerCategoriaPorId,
     crearCategoria,
     editarCategoria,
     buscarCategoria,
@@ -8,20 +7,26 @@ import {
 } from "../models/categoria.model.js";
 
 
-// Listar categorías
+
+// Listar
+
 export const listar = async (req, res) => {
 
     try {
+
         if (!req.session.usuario) {
-            return res.redirect("/usuarios/login")
+            return res.redirect("/usuarios/login");
         }
+
         const id_usuario = req.session.usuario.id_usuario;
+
         const categorias = await obtenerCategorias(id_usuario);
+
         res.render("categorias/index", {
             categorias,
             mensaje: null
         });
-        
+
     } catch (error) {
 
         console.log(error);
@@ -35,31 +40,43 @@ export const listar = async (req, res) => {
 };
 
 
-// Crear categoría
+
+// Crear
+
+
 export const crear = async (req, res) => {
 
     try {
 
         const { nombre } = req.body;
 
-        
-        if(!nombre){
-                return res.render("categorias/index", {
-                    categorias: [],
-                    mensaje: "Ingrese un nombre para la categoria"
-                })
+        const id_usuario = req.session.usuario.id_usuario;
+
+        if (!nombre) {
+
+            const categorias = await obtenerCategorias(id_usuario);
+
+            return res.render("categorias/index", {
+                categorias,
+                mensaje: "Ingrese un nombre para la categoría"
+            });
+
         }
 
-        //cada usuario crea sus propias categorias
-        const id_usuario = req.session.usuario.id_usuario;
-        //verificar duplicado
-        const existe = await buscarCategoria(nombre, id_usuario);
-        if(existe){
+        const existe = await buscarCategoria(
+            nombre,
+            id_usuario
+        );
+
+        if (existe) {
+
             const categorias = await obtenerCategorias(id_usuario);
+
             return res.render("categorias/index", {
-                categorias, 
-                mensaje:"Ya existe una categoria con ese nombre"
+                categorias,
+                mensaje: "Ya existe una categoría con ese nombre"
             });
+
         }
 
         await crearCategoria({
@@ -82,7 +99,10 @@ export const crear = async (req, res) => {
 };
 
 
-// Editar categoría
+
+// Editar
+
+
 export const editar = async (req, res) => {
 
     try {
@@ -92,16 +112,14 @@ export const editar = async (req, res) => {
 
         await editarCategoria(id, nombre);
 
-        res.json({
-            mensaje: "Categoría actualizada"
-        });
+        res.redirect("/categorias");
 
     } catch (error) {
 
         console.log(error);
 
         res.status(500).json({
-            mensaje: "Error al actualizar categoría"
+            mensaje: "Error al editar categoría"
         });
 
     }
@@ -109,7 +127,10 @@ export const editar = async (req, res) => {
 };
 
 
-// Eliminar categoría
+
+// Eliminar
+
+
 export const eliminar = async (req, res) => {
 
     try {
@@ -118,9 +139,7 @@ export const eliminar = async (req, res) => {
 
         await eliminarCategoria(id);
 
-        res.json({
-            mensaje: "Categoría eliminada"
-        });
+        res.redirect("/categorias");
 
     } catch (error) {
 
