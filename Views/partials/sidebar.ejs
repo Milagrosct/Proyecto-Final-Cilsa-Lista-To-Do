@@ -1,33 +1,75 @@
+<!-- Botón hamburguesa (solo celular) -->
+<nav class="navbar navbar-dark bg-dark d-lg-none">
+    <div class="container-fluid">
 
+        <a class="navbar-brand" href="/">
+            <img src="/Images/Taskflow.png"
+                 alt="TaskFlow"
+                 style="height:40px;">
+        </a>
 
-<!-- Menu Barra  -->
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#sidebarMenu">
 
-<div class="sidebar">
+            <span class="navbar-toggler-icon"></span>
 
-    <h2>TaskFlow</h2>
+        </button>
 
-    <ul>
+    </div>
+</nav>
 
-        <li>
-            <a href="/">🏠 Inicio</a>
-        </li>
+<!-- Sidebar -->
+<div class="offcanvas-lg offcanvas-start sidebar bg-dark text-white"
+     tabindex="-1"
+     id="sidebarMenu">
 
-        <li>
-            <a href="/tareas">📝 Tareas</a>
-        </li>
+    <div class="offcanvas-header d-lg-block text-center border-bottom">
 
-        <li>
-            <a href="/categorias">📂 Categorías</a>
-        </li>
+        <img src="/Images/Taskflow.png"
+             alt="TaskFlow"
+             class="logo img-fluid">
 
-       <!--  <li>
-            <a href="/usuarios/perfil">👤 Mi perfil</a>
-        </li> -->
+        <button type="button"
+                class="btn-close btn-close-white d-lg-none position-absolute end-0 top-0 m-3"
+                data-bs-dismiss="offcanvas">
+        </button>
 
-        <li>
-            <a href="/usuarios/logout">🚪 Cerrar sesión</a>
-        </li>
+    </div>
 
-    </ul>
+    <div class="offcanvas-body">
+
+        <ul class="nav flex-column">
+
+            <li class="nav-item">
+                <a href="/" class="nav-link text-white">
+                    🏠 Inicio
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/tareas" class="nav-link text-white">
+                    📝 Tareas
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/categorias" class="nav-link text-white">
+                    📂 Categorías
+                </a>
+            </li>
+
+            <hr class="text-secondary">
+
+            <li class="nav-item">
+                <a href="/usuarios/logout" class="nav-link text-danger">
+                    🚪 Cerrar sesión
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
 
 </div>

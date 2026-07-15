@@ -3,7 +3,11 @@
 
 body{
     padding: 0;
+    background-color: #080810 !important;
+    color: white !important;
+    
 }
+
 .prioridad {
     padding: 5px 14px;
     border-radius: 20px;
@@ -20,17 +24,15 @@ body{
 
 
 .prioridad.media {
-    background-color: #ffc107;
+    background-color: orange;
     color: black;
 }
 
 
 .prioridad.baja {
-    background-color: #28a745;
+    background-color: green;
     color: white;
 }
-
-
 
 
 
@@ -47,7 +49,8 @@ body{
 
 .card-tarea {
     width: 400px;
-    background: white;
+    background: #171728;
+    color: white;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
@@ -65,7 +68,7 @@ body{
 /* Color de la barra */
 
 .card-tarea.alta .barra-prioridad{
-    background:red;
+    background:#dc3545;
 }
 
 
@@ -90,13 +93,13 @@ body{
 
 
 .prioridad.alta{
-    background:red;
+    background:#dc3545;
     color:white;
 }
 
 
 .prioridad.media{
-    background:yellow;
+    background:orange;
     color:black;
 }
 

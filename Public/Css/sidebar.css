@@ -1,0 +1,60 @@
+.sidebar{
+    background-color: #171728 !important;
+    width:260px;
+    min-height:100vh;
+
+}
+
+.logo{
+
+    width:170px;
+    margin:20px auto;
+    display:block;
+
+}
+
+.nav-link{
+
+    padding:15px 20px;
+    transition:.3s;
+    border-radius:8px;
+    margin:4px 10px;
+
+}
+
+.nav-link:hover{
+
+    background:#294571;
+    color:white !important;
+
+}
+
+@media(min-width:992px){
+
+    .sidebar{
+
+        position:fixed;
+        left:0;
+        top:0;
+
+    }
+
+    .contenido{
+
+        margin-left:260px;
+        padding:30px;
+
+    }
+
+}
+
+@media(max-width:991px){
+
+    .contenido{
+
+        margin-left:0;
+        padding:20px;
+
+    }
+
+}

@@ -12,7 +12,7 @@
         <p><%= tarea.descripcion || "Sin descripción" %></p>
 
         <small>
-            Categoría: <%= tarea.categoria || "Sin categoría" %>
+            <%= tarea.categoria || "Sin categoría" %>
         </small>
 
         <hr>
@@ -25,7 +25,7 @@
                 <option value="3" <%= tarea.id_estado == 3 ? "selected" : "" %>>Completada</option>
             </select>
         </form>
-
+        
         <!-- Prioridad -->
         <span class="prioridad <%= tarea.prioridad.toLowerCase() %>">
             <%= tarea.prioridad %>

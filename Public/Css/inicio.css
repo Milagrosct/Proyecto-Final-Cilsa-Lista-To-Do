@@ -1,3 +1,18 @@
 
 
 /* Pagina principal que muestra tareas completadas, incompletas */
+
+
+
+body {
+    background-color: #0F0F1A !important;
+    color: white !important;
+}
+
+
+/* .logo{
+    width: 180px;
+    display: block;
+    margin: 20px auto;
+}
+*/
