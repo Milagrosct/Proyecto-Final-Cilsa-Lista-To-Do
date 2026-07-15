@@ -19,6 +19,7 @@ router.get("/registro", (req, res) => {
     }); 
     
 });
+//mostrar el form del login 
 router.get("/login", (req, res) => {
     res.render("login/login", {
         mensaje: null

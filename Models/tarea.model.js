@@ -91,7 +91,7 @@ export const obtenerMisTareas = async (id_usuario, filtros = {}) => {
 
 
     sql += `
-        ORDER BY tareas.nombre
+        ORDER BY tareas.fecha_creacion DESC
     `;
 
 
