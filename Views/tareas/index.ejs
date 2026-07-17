@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/Css/sidebar.css">
     <link rel="stylesheet" href="/Css/tareas/tareas.css">
     <link rel="stylesheet" href="/Css/tareas/modalEditar.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     
 
@@ -21,7 +23,12 @@
 
 
 <!-- Boton de Crear tareas  -->
-<button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearTarea">+ Crear tarea</button>
+<button class="btn btn-success btn-crear" data-bs-toggle="modal" data-bs-target="#crearTarea">
+
+    <i class="fa-solid fa-plus"></i>
+    Nueva tarea
+</button>
+
 <!-- Modal de crear tareas -->
  <div class="modal fade" id="crearTarea" tabindex="-1">
 <div class="modal-dialog">
@@ -73,7 +80,7 @@
 
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="submit" class="btn btn-success">Crear tarea</button>
+    <button type="submit" class="btn btn-success ">Crear tarea</button>
                 </div>
             </form>
         </div>
@@ -81,44 +88,41 @@
 </div>
 
 <!-- Filtros -->
-<form action="/tareas" method="GET" class="mb-4">
+<form action="/tareas" method="GET" class="filtros">
 
+    <div class="busqueda">
 
-    <!-- Buscar tareas -->
-    <input 
-        type="text" 
-        name="buscar" 
-        placeholder="Buscar tarea..." 
-        value="<%= filtros.buscar %>"
-        class="form-control mb-2">
+        <i class="fa-solid fa-magnifying-glass"></i>
 
+        <input
+            type="text"
+            name="buscar"
+            placeholder="Buscar tarea..."
+            value="<%= filtros.buscar %>">
 
-    <!-- Buscar categoria -->
-    <select name="categoria" class="form-control mb-2">
+    </div>
 
-        <option value="">
-            Todas las categorías
-        </option>
+    <select name="categoria">
 
-        <% categorias.forEach(categoria => { %>
+        <option value="">Categoría</option>
 
-            <option 
+        <% categorias.forEach(categoria=>{ %>
+
+            <option
             value="<%= categoria.id_categoria %>"
-            <%= filtros.categoria == categoria.id_categoria ? "selected" : "" %>>
+            <%= filtros.categoria==categoria.id_categoria?"selected":"" %>>
+
                 <%= categoria.nombre %>
+
             </option>
 
         <% }) %>
 
     </select>
 
+    <select name="prioridad">
 
-    <!-- Buscar por prioridad -->
-    <select name="prioridad" class="form-control mb-2">
-
-        <option value="">
-            Todas las prioridades
-        </option>
+        <option value="">Prioridad</option>
 
         <option value="Baja"
         <%= filtros.prioridad=="Baja"?"selected":"" %>>
@@ -137,11 +141,13 @@
 
     </select>
 
+    <button class="btn btn-primary">
 
-    <button type="submit" class="btn btn-primary">
-        Buscar
+        <i class="fa-solid fa-filter"></i>
+
+        Filtrar
+
     </button>
-
 
 </form>
 

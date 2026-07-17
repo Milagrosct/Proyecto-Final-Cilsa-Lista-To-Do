@@ -9,45 +9,62 @@
 
 <body>
 
-    <h1>Registrarse</h1>
 
-    <% if (mensaje) { %>
+<div class="contenedor">
+
+    <div class="info">
+
+        <img src="/Images/Taskflow.png" alt="TaskFlow" class="logo">
+
+
+        <p>
+            Organizá tus tareas, administrá tus proyectos y mantené todo bajo control desde un solo lugar.
+        </p>
+
+    </div>
+
+    <div class="formulario">
+
+        <h2>Registrarse</h2>
+
+        <% if (mensaje) { %>
             <div class="alert alert-danger">
-                <%=mensaje%>
+                <%= mensaje %>
             </div>
-        <%}%>
+        <% } %>
 
-    <form action="/usuarios/registro" method="POST">
+        <form action="/usuarios/registro" method="POST">
 
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required>
+            <label>Nombre</label>
+            <input type="text" name="nombre" required>
 
-        <label>Apellido:</label>
-        <input type="text" name="apellido" required>
+            <label>Apellido</label>
+            <input type="text" name="apellido" required>
 
-        <label>Email:</label>
-        <input type="email" name="email" required>
+            <label>Email</label>
+            <input type="email" name="email" required>
 
-        <br>
+            <label>Contraseña</label>
+            <input type="password" name="password" required>
 
-        <label>Contraseña:</label>
-        <input type="password" name="password" required>
-        
-        <label>Repetir contraseña:</label>
-        <input type="password" name="confirmPassword" required>
-        
+            <label>Repetir contraseña</label>
+            <input type="password" name="confirmPassword" required>
 
-        <br>
+            <button type="submit">
+                Registrarse
+            </button>
+
+        </form>
+
+        <p class="login">
+            ¿Ya tenés cuenta?
+            <a href="/usuarios/login">Iniciar sesión</a>
+        </p>
+
+    </div>
+
+</div>
 
 
-        <button type="submit">
-            Registrarse
-        </button>
-
-    </form>
-
-
-  
-
-</body>
+    </body>
 </html>

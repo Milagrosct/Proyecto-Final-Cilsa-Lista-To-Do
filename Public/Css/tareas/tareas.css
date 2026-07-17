@@ -3,7 +3,7 @@
 
 body{
     padding: 0;
-    background-color: #080810 !important;
+    background:linear-gradient(135deg,#040e23,#112661);
     color: white !important;
     
 }
@@ -49,7 +49,7 @@ body{
 
 .card-tarea {
     width: 400px;
-    background: #171728;
+    background: #060e25;
     color: white;
     border-radius: 15px;
     overflow: hidden;
@@ -118,4 +118,109 @@ body{
     color:white;
     font-size:0.85rem;
     background:transparent;
+}
+
+
+
+
+
+.filtros{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+    margin:35px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.busqueda{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#060e25;
+
+    border:1px solid #34344b;
+
+    border-radius:12px;
+
+    padding:0 15px;
+
+}
+
+.busqueda i{
+
+    color:#8f9bb3;
+
+    margin-right:10px;
+
+}
+
+.busqueda input{
+
+    width:100%;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    padding:12px 0;
+
+}
+
+.busqueda input:focus{
+
+    outline:none;
+
+}
+
+.filtros select{
+
+    background:#060e25;
+
+    color:white;
+
+    border:1px solid #34344b;
+
+    border-radius:12px;
+
+    padding:12px 15px;
+
+    min-width:180px;
+
+}
+
+.filtros select:focus{
+
+    outline:none;
+
+    border-color:#2563eb;
+
+}
+
+.btn-crear{
+
+    border-radius:12px;
+    margin-top: 12px;
+    padding:12px 22px;
+    background-color: #2563eb;
+
+}
+.boton-tarea{
+    margin-top: 10px !important ;
+ padding:12px 22px;
+}
+
+.vence{
+    color: #dc3545;
 }

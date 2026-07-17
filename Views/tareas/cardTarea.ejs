@@ -28,6 +28,7 @@
     <div class="d-flex gap-2 align-items-center mb-3">
 <!-- categoria -->
     <span class="categoria">
+        <i class="fa-solid fa-tag"></i>
         <%= tarea.categoria || "Sin categoría" %>
     </span>
   <!-- Prioridad -->
@@ -39,6 +40,7 @@
         <!-- FECHAS -->
          
         <p class="mt-3">
+            <i class="fa-regular fa-calendar"></i>
             Creada el
             <%= new Date(tarea.fecha_creacion).toLocaleDateString("es-AR", {
                 day: "2-digit",
@@ -49,6 +51,7 @@
             }) %>
         </p>
         <p>
+            <i class="fa-regular fa-clock"></i>
             <strong>Inicio:</strong>
             <%= tarea.fecha_inicio
                 ? new Date(tarea.fecha_inicio).toLocaleString("es-AR",{
@@ -60,7 +63,8 @@
                 })
                 : "-" %>
         </p>
-        <p>
+        <p class="vence">
+            <i class="fa-solid fa-triangle-exclamation"></i>
             <strong>Vence:</strong>
             <%= tarea.fecha_vencimiento
                 ? new Date(tarea.fecha_vencimiento).toLocaleString("es-AR",{
@@ -81,7 +85,7 @@
                 class="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#editar<%= tarea.id_tarea %>">
-                ✏️ Editar
+                <i class="fa-regular fa-pen-to-square"></i> Editar
             </button>
            <!--  ELIMINAR -->
             <form action="/tareas/eliminar/<%= tarea.id_tarea %>" method="POST">
@@ -89,7 +93,7 @@
                     type="submit"
                     class="btn btn-danger"
                     onclick="return confirm('¿Seguro que querés eliminar esta tarea?')">
-                    🗑 Eliminar
+                   <i class="fa-solid fa-trash-can"></i> Eliminar
                 </button>
             </form>
 
