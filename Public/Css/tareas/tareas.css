@@ -207,20 +207,45 @@ body{
     border-color:#2563eb;
 
 }
-
+.btn-filtrar{
+    background-color: white;
+    color: #040e23;
+    border: none;
+}
+.btn-filtrar:hover{
+    background-color: #040e23;
+    color: white;
+}
 .btn-crear{
 
     border-radius:12px;
     margin-top: 12px;
     padding:12px 22px;
-    background-color: #2563eb;
-
+    background-color: #ffffff;
+    color: #040e23;
+    border: none;
+}
+.btn-crear:hover{
+    background-color: #040e23;
+    color: white;
 }
 .boton-tarea{
     margin-top: 10px !important ;
  padding:12px 22px;
 }
 
+.btn-editar{
+background-color: white;
+color: #040e23;
+border: none;
+}
+.btn-editar:hover{
+background-color: #112661;
+color: white;
+
+}
+
 .vence{
     color: #dc3545;
 }
+

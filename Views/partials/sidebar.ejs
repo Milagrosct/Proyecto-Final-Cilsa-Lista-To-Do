@@ -1,17 +1,20 @@
-<!-- Botón hamburguesa (solo celular) -->
+<!-- Navbar móvil -->
 <nav class="navbar navbar-dark bg-dark d-lg-none">
     <div class="container-fluid">
 
         <a class="navbar-brand" href="/">
-            <img src="/Images/Taskflow.png"
-                 alt="TaskFlow"
-                 style="height:40px;">
+            <img
+                src="/Images/Taskflow.png"
+                alt="TaskFlow"
+                style="height:40px;">
         </a>
 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#sidebarMenu">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebarMenu"
+            aria-controls="sidebarMenu">
 
             <span class="navbar-toggler-icon"></span>
 
@@ -21,48 +24,58 @@
 </nav>
 
 <!-- Sidebar -->
-<div class="offcanvas-lg offcanvas-start sidebar bg-dark text-white"
-     tabindex="-1"
-     id="sidebarMenu">
+<div
+    class="offcanvas offcanvas-start offcanvas-lg sidebar bg-dark text-white"
+    tabindex="-1"
+    id="sidebarMenu"
+    aria-labelledby="sidebarMenuLabel">
 
-    <div class="offcanvas-header d-lg-block text-center border-bottom">
+ <div class="offcanvas-header d-flex d-lg-block text-center border-bottom">
 
-        <img src="/Images/Taskflow.png" alt="TaskFlow" class="logo img-fluid">
+    <img
+        src="/Images/Taskflow.png"
+        alt="TaskFlow"
+        class="logo img-fluid">
 
-        <button type="button"
-                class="btn-close btn-close-white d-lg-none position-absolute end-0 top-0 m-3"
-                data-bs-dismiss="offcanvas">
-        </button>
+    <button
+        type="button"
+        class="btn-close btn-close-white d-lg-none"
+        data-bs-dismiss="offcanvas">
+    </button>
 
-    </div>
+</div>
 
-    <div class="offcanvas-body">
+    <div class="offcanvas-body p-0">
 
         <ul class="nav flex-column">
 
             <li class="nav-item">
                 <a href="/" class="nav-link text-white">
-                  <i class="fa-solid fa-gauge-high"></i> Inicio
+                    <i class="fa-solid fa-gauge-high me-2"></i>
+                    Inicio
                 </a>
             </li>
 
             <li class="nav-item">
                 <a href="/tareas" class="nav-link text-white">
-                   <i class="fa-solid fa-list-check"></i> Tareas
+                    <i class="fa-solid fa-list-check me-2"></i>
+                    Tareas
                 </a>
             </li>
 
             <li class="nav-item">
                 <a href="/categorias" class="nav-link text-white">
-                    <i class="fa-solid fa-tags"></i> Categorías
+                    <i class="fa-solid fa-tags me-2"></i>
+                    Categorías
                 </a>
             </li>
 
             <hr class="text-secondary">
 
             <li class="nav-item">
-                <a href="/usuarios/logout" class="nav-link text-danger">
-                   <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión
+                <a href="/usuarios/logout" class="nav-link text-danger" id="logout">
+                    <i class="fa-solid fa-arrow-right-from-bracket me-2"></i>
+                    Cerrar sesión
                 </a>
             </li>
 

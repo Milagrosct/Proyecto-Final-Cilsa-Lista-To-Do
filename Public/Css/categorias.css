@@ -9,9 +9,11 @@ body{
 }
 
 .categoria{
-    background-color: #040e23;
-    color: white;
-    border: #112661;
+    background:#040e23 !important;
+    color:white;
+    border:none;
+    border-radius:15px;
+    padding:20px;
 }
 
 
@@ -31,8 +33,13 @@ body{
 
     margin-bottom:40px;
 
+
 }
 
+.card{
+    background:transparent !important;
+    border:none !important;
+}
 
 .form-categoria label{
 
@@ -45,6 +52,7 @@ body{
     font-weight:600;
 
     margin-bottom:15px;
+     border:none !important;
 
 }
 
@@ -60,6 +68,7 @@ body{
 .boton-crear{
     background-color: #ffffff;
     color: #040e23;
+    border: none;
 }
 .boton-crear:hover{
     background-color:  #040e23;
@@ -139,5 +148,16 @@ body{
         padding:12px;
 
     }
+
+}
+
+.btn-editar{
+background-color: white;
+color: #040e23;
+border: none;
+}
+.btn-editar:hover{
+background-color: #112661;
+color: white;
 
 }

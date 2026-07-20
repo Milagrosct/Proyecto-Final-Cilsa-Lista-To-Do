@@ -81,7 +81,7 @@ body{
 
     text-align:center;
 
-    color:#2563eb;
+    color: #1e3a8a;
 
     margin-bottom:25px;
 
@@ -131,7 +131,7 @@ button{
 
     padding:13px;
 
-    background:#2563eb;
+    background: #1e3a8a;
 
     color:white;
 
@@ -165,7 +165,7 @@ button:hover{
 
     text-decoration:none;
 
-    color:#2563eb;
+    color:#1e3a8a;
 
     font-weight:bold;
 
@@ -226,7 +226,7 @@ button:hover{
 
     text-decoration:none;
 
-    color:#2563eb;
+    color:#1e3a8a;
 
     font-weight:bold;
 
