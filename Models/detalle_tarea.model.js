@@ -1,8 +1,7 @@
 import db from "../config/db.js";
 
-export const crearDetalleTarea = async(detalle)=> {
-   console.log("Llega detalle:");
-    console.log(detalle);
+export const crearDetalleTarea = async (detalle) => {
+
     const {
         id_usuario,
         id_tarea,
@@ -12,26 +11,32 @@ export const crearDetalleTarea = async(detalle)=> {
         fecha_vencimiento
     } = detalle;
 
-    const sql = `INSERT INTO detalle_tarea (id_usuario, 
-                id_tarea,
-                id_estado, prioridad, 
-                fecha_inicio, 
-                fecha_vencimiento) 
-                VALUES (?, ?, ?, ?, ?, ?)`;
+    const inicio = fecha_inicio || null;
+    const vencimiento = fecha_vencimiento || null;
 
+    const sql = `
+        INSERT INTO detalle_tarea (
+            id_usuario,
+            id_tarea,
+            id_estado,
+            prioridad,
+            fecha_inicio,
+            fecha_vencimiento
+        )
+        VALUES (?, ?, ?, ?, ?, ?)
+    `;
 
-    const [resultado] = await db.execute(sql,[
+    const [resultado] = await db.execute(sql, [
         id_usuario,
         id_tarea,
         id_estado,
         prioridad,
-        fecha_inicio,
-        fecha_vencimiento
+        inicio,
+        vencimiento
     ]);
 
     return resultado;
-
-}
+};
 
 //Editar
 export const editarDetalleTarea = async (id_tarea, detalle)=>{

@@ -17,7 +17,7 @@
 
         <!-- Estado -->
         <form action="/tareas/estado/<%= tarea.id_tarea %>" method="POST" class="mb-3">
-            <select class="form-select" name="id_estado" onchange="this.form.submit()">
+            <select class="form-select estado-select estado-<%= tarea.id_estado %>" name="id_estado" onchange="this.form.submit()">
                 <option value="1" <%= tarea.id_estado == 1 ? "selected" : "" %>>Pendiente</option>
                 <option value="2" <%= tarea.id_estado == 2 ? "selected" : "" %>>En progreso</option>
                 <option value="3" <%= tarea.id_estado == 3 ? "selected" : "" %>>Completada</option>
@@ -27,10 +27,12 @@
       
     <div class="d-flex gap-2 align-items-center mb-3">
 <!-- categoria -->
-    <span class="categoria">
-        <i class="fa-solid fa-tag"></i>
-        <%= tarea.categoria || "Sin categoría" %>
-    </span>
+ <span
+    class="categoria"
+    style="background-color:<%= tarea.color_categoria %>;">
+    <i class="fa-solid fa-tag"></i>
+    <%= tarea.categoria %>
+</span>
   <!-- Prioridad -->
     <span class="prioridad <%= tarea.prioridad.toLowerCase() %>">
         <%= tarea.prioridad %>

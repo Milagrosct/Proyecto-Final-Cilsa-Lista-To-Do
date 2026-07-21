@@ -38,12 +38,17 @@ export const mostrarTareas = async(req,res)=>{
 
         const categorias = await obtenerCategorias(id_usuario);
 
-        res.render("tareas/index",{
-            tareas,
-            categorias,
-            usuario:req.session.usuario,
-            filtros
-        });
+        const success = req.session.success;
+
+delete req.session.success;
+
+res.render("tareas/index",{
+    tareas,
+    categorias,
+    usuario:req.session.usuario,
+    filtros,
+    success
+});
 
 
     } catch(error){
@@ -116,6 +121,7 @@ export const crear = async(req,res)=>{
 
         });
 
+        req.session.success = "La tarea se agregó correctamente.";
         res.redirect("/tareas");
 
     } catch(error){
@@ -160,7 +166,7 @@ export const editar = async(req,res)=>{
             fecha_inicio,
             fecha_vencimiento
         });
-
+        req.session.success = "La tarea se actualizó correctamente.";
         res.redirect("/tareas");
 
     } catch(error){

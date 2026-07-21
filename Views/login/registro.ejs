@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="/Css/login-registro/registro.css">
+            
     <title>Registrarse</title>
 </head>
 
@@ -36,13 +37,13 @@
         <form action="/usuarios/registro" method="POST">
 
             <label>Nombre</label>
-            <input type="text" name="nombre" required>
+            <input type="text" name="nombre" minlength="3" maxlength="100" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras y espacios" required>
 
             <label>Apellido</label>
-            <input type="text" name="apellido" required>
+            <input type="text" name="apellido"  minlength="3" maxlength="100" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras y espacios" required>
 
             <label>Email</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" maxlength="100" required>
 
             <label>Contraseña</label>
             <input type="password" name="password" required>

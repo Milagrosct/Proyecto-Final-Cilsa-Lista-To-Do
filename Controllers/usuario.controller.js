@@ -42,6 +42,7 @@ export const registrar = async(req,res)=>{
             password
         });
 
+        req.session.success = "Usuario registrado correctamente.";
         return res.redirect("/usuarios/login")
             
      

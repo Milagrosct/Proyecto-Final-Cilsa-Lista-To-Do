@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Css/login-registro/login.css">
+    
     <title>Iniciar sesión</title>
 </head>
 
@@ -25,6 +26,7 @@
     </div>
 
     <!-- Formulario -->
+
     <div class="formulario">
 
         <h2>Iniciar sesión</h2>
@@ -34,7 +36,19 @@
                 <%= mensaje %>
             </div>
         <% } %>
+     <!--    mensaje exito -->
 
+    <% if (success) { %>
+    <div class="alert alert-success">
+        <%= success %>
+    </div>
+    <% } %>
+
+<% if (mensaje) { %>
+    <div class="alert alert-danger">
+        <%= mensaje %>
+    </div>
+<% } %>
         <form action="/usuarios/login" method="POST">
 
             <label>Email</label>

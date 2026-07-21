@@ -21,7 +21,7 @@ export const obtenerMisTareas = async (id_usuario, filtros = {}) => {
             tareas.*,
 
             categorias.nombre AS categoria,
-
+            categorias.color AS color_categoria,
             creador.nombre AS nombre_creador,
             creador.apellido AS apellido_creador,
 

@@ -22,10 +22,15 @@ export const listar = async (req, res) => {
 
         const categorias = await obtenerCategorias(id_usuario);
 
+          const success = req.session.success;
+
+        delete req.session.success;
+
         res.render("categorias/index", {
             categorias,
-            mensaje: null
+            success
         });
+
 
     } catch (error) {
 
@@ -48,7 +53,7 @@ export const crear = async (req, res) => {
 
     try {
 
-        const { nombre } = req.body;
+        const { nombre, color} = req.body;
 
         const id_usuario = req.session.usuario.id_usuario;
 
@@ -76,14 +81,14 @@ export const crear = async (req, res) => {
                 categorias,
                 mensaje: "Ya existe una categoría con ese nombre"
             });
-
         }
 
         await crearCategoria({
             nombre,
+            color,
             id_usuario
         });
-
+        req.session.success = "La categoría se creó correctamente.";
         res.redirect("/categorias");
 
     } catch (error) {
@@ -108,9 +113,9 @@ export const editar = async (req, res) => {
     try {
 
         const { id } = req.params;
-        const { nombre } = req.body;
+        const { nombre, color } = req.body;
 
-        await editarCategoria(id, nombre);
+        await editarCategoria(id, nombre, color);
 
         res.redirect("/categorias");
 
@@ -138,7 +143,7 @@ export const eliminar = async (req, res) => {
         const { id } = req.params;
 
         await eliminarCategoria(id);
-
+        req.session.success = "La categoría se eliminó correctamente.";
         res.redirect("/categorias");
 
     } catch (error) {

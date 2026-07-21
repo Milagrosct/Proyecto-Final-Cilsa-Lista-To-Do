@@ -234,6 +234,18 @@ body{
  padding:12px 22px;
 }
 
+.btn-creartarea{
+background-color: white;
+color: #060e25;
+border: none;
+}
+
+.btn-creartarea:hover{
+background-color: #060e25;
+color: white;
+border: none;
+}
+
 .btn-editar{
 background-color: white;
 color: #040e23;
@@ -249,3 +261,51 @@ color: white;
     color: #dc3545;
 }
 
+.mensaje-exito {
+    position: relative;
+    z-index: 1100;
+}
+
+@media (min-width: 992px) {
+    .mensaje-exito {
+        margin-left: 260px;
+    }
+}
+
+/* 
+CSS ESTADOS */
+
+.estado-select {
+    border-radius: 20px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    padding: 8px 15px;
+}
+
+
+/* Pendiente */
+.estado-1 {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+
+/* En progreso */
+.estado-2 {
+    background-color: #cff4fc;
+    color: #055160;
+}
+
+
+/* Completada */
+.estado-3 {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+
+.estado-select:focus {
+    box-shadow: none;
+}

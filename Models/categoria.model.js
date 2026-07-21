@@ -32,30 +32,32 @@ export const obtenerCategoriaPorId = async (id_categoria) => {
 // Crear categoría
 export const crearCategoria = async (categoria) => {
     const {
-        nombre, id_usuario
+        nombre, 
+        color, 
+        id_usuario
     } = categoria;
 
     const sql = `
-        INSERT INTO categorias (nombre, id_usuario)
-        VALUES (?, ?)
+        INSERT INTO categorias (nombre, color, id_usuario)
+        VALUES (?, ?, ?)
     `;
 
-    const [resultado] = await db.execute(sql, [nombre, id_usuario]);
+    const [resultado] = await db.execute(sql, [nombre, color, id_usuario]);
 
     return resultado;
 };
 
 
 // Editar categoría
-export const editarCategoria = async (id_categoria, nombre) => {
+export const editarCategoria = async (id_categoria, nombre, color) => {
 
     const sql = `
         UPDATE categorias
-        SET nombre = ?
+        SET nombre = ?, color = ?
         WHERE id_categoria = ?
     `;
 
-    const [resultado] = await db.execute(sql, [nombre, id_categoria]);
+    const [resultado] = await db.execute(sql, [nombre, color, id_categoria]);
 
     return resultado;
 };

@@ -21,9 +21,15 @@ router.get("/registro", (req, res) => {
 });
 //mostrar el form del login 
 router.get("/login", (req, res) => {
+
+    const success = req.session.success;
+    delete req.session.success;
+
     res.render("login/login", {
-        mensaje: null
+        mensaje: null,
+        success
     });
+
 });
 
 //Recibir datos del registro/login

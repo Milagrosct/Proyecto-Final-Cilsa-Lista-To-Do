@@ -17,9 +17,24 @@
 <body>
     <!-- Barra de dashboard - sidebar (partials/sidebar.ejs)-->
 <%- include("../partials/sidebar") %>
+<div class="contenido-principal">
+<!-- mensaje alerta exito -->
+<% if (success) { %>
+<div class="alert alert-success alert-dismissible fade show mt-3 mensaje-exito">
+
+    <%= success %>
+
+    <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert">
+    </button>
+
+</div>
+<% } %>
 
 <main class="contenido">  
-<h1>Hola <%= usuario.nombre %> 👋</h1>
+<h1 class="text-center text-md-start">Hola <%= usuario.nombre %> 👋</h1>
 
 
 <!-- Boton de Crear tareas  -->
@@ -44,10 +59,13 @@
     <div class="modal-body">
 
     <label>Nombre</label>
-    <input type="text"name="nombre"class="form-control" placeholder="Nombre de la tarea" required>
+    <input type="text"name="nombre"class="form-control" placeholder="Nombre de la tarea"  minlength="3"
+    maxlength="100"
+    pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ0-9 .,_-]+"
+    title="Solo letras, números, espacios, punto, coma, guion y guion bajo" required>
 
     <label>Descripción</label>
-    <textarea name="descripcion" class="form-control"></textarea>
+    <textarea name="descripcion" class="form-control" maxlength="300"></textarea>
 
     <label>Categoría</label>
 
@@ -80,7 +98,7 @@
 
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-    <button type="submit" class="btn btn-success ">Crear tarea</button>
+    <button type="submit" class="btn btn-success btn-creartarea">Crear tarea</button>
                 </div>
             </form>
         </div>
@@ -176,7 +194,7 @@
 </div>
 
 <% } %>
-
+</div>
 </main>  
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
