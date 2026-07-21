@@ -22,16 +22,20 @@ export const registrar = async(req,res)=>{
 
         if(existe){
 
-            return res.render("login/registro", {
-            mensaje: "El correo ya está registrado."
-            });
+    return res.render("login/registro", {
+        mensaje: "El correo ya está registrado.",
+        success: null
+    });
 
-        }
-        //confirmar el pasword
-        if(password !== confirmPassword){
-        return res.render("login/registro", {
-        mensaje: "Las contraseñas no coinciden"
-        });
+}
+
+
+if(password !== confirmPassword){
+
+    return res.render("login/registro", {
+        mensaje: "Las contraseñas no coinciden",
+        success: null
+    });
 
 }
 
@@ -74,21 +78,23 @@ export const login = async(req,res)=>{
         const usuario = await buscarPorEmail(email);
 
 
-        if(!usuario){
+       if(!usuario){
 
-            return res.render("login/login", {
-                mensaje: "Usuario no encontrado."
-            });
-        }
+    return res.render("login/login", {
+        mensaje: "Usuario no encontrado.",
+        success: null
+    });
+}
 
 
-        if(usuario.password !== password){
+if(usuario.password !== password){
 
-            return res.render("login/login", {
-                mensaje: "Contraseña o email incorrecto."
-            });
+    return res.render("login/login", {
+        mensaje: "Contraseña o email incorrecto.",
+        success: null
+    });
 
-        }
+}
 
         //Crear la sesion
         req.session.usuario = {

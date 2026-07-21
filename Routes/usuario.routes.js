@@ -23,6 +23,7 @@ router.get("/registro", (req, res) => {
 router.get("/login", (req, res) => {
 
     const success = req.session.success;
+
     delete req.session.success;
 
     res.render("login/login", {
