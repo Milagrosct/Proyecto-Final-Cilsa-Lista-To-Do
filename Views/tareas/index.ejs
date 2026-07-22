@@ -36,14 +36,15 @@
 <main class="contenido">  
 <h1 class="text-center text-md-start">Hola <%= usuario.nombre %> 👋</h1>
 
-
+<br>
 <!-- Boton de Crear tareas  -->
+ <div class="d-flex justify-content-center justify-content-md-start mb-4">
 <button class="btn btn-success btn-crear" data-bs-toggle="modal" data-bs-target="#crearTarea">
 
     <i class="fa-solid fa-plus"></i>
     Nueva tarea
 </button>
-
+</div>
 <!-- Modal de crear tareas -->
  <div class="modal fade" id="crearTarea" tabindex="-1">
 <div class="modal-dialog">
@@ -85,11 +86,12 @@
     <option value="Alta">Alta</option>
 </select>
 
+<!-- FECHAS -->
 <label>Fecha inicio</label>
 <input type="datetime-local"name="fecha_inicio" class="form-control">
 
 <label>Fecha vencimiento</label>
-<input type="datetime-local" name="fecha_vencimiento" class="form-control">
+<input type="datetime-local" name="fecha_vencimiento" class="form-control" min="<%= new Date().toISOString().slice(0,16) %>">
 
 <hr>
 
@@ -106,71 +108,67 @@
 </div>
 
 <!-- Filtros -->
-<form action="/tareas" method="GET" class="filtros">
+<form action="/tareas" method="GET" class="row g-3 justify-content-center align-items-center mb-4">
 
-    <div class="busqueda">
-
-        <i class="fa-solid fa-magnifying-glass"></i>
-
-        <input
-            type="text"
-            name="buscar"
-            placeholder="Buscar tarea..."
-            value="<%= filtros.buscar %>">
-
+    <div class="col-12 col-md-4">
+        <div class="busqueda">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+                type="text"
+                name="buscar"
+                placeholder="Buscar tarea..."
+                value="<%= filtros.buscar %>">
+        </div>
     </div>
+<!-- Filtro por categorias -->
+    <div class="col-12 col-sm-6 col-md-2">
+        <select name="categoria" class="form-select filtro-select">
+            <option value="">Categoría</option>
 
-    <select name="categoria">
+            <% categorias.forEach(categoria=>{ %>
 
-        <option value="">Categoría</option>
+                <option
+                    value="<%= categoria.id_categoria %>"
+                    <%= filtros.categoria==categoria.id_categoria?"selected":"" %>>
+                    <%= categoria.nombre %>
+                </option>
 
-        <% categorias.forEach(categoria=>{ %>
+            <% }) %>
 
-            <option
-            value="<%= categoria.id_categoria %>"
-            <%= filtros.categoria==categoria.id_categoria?"selected":"" %>>
-
-                <%= categoria.nombre %>
-
-            </option>
-
-        <% }) %>
-
-    </select>
-
-    <select name="prioridad">
-
-        <option value="">Prioridad</option>
-
-        <option value="Baja"
-        <%= filtros.prioridad=="Baja"?"selected":"" %>>
-            Baja
-        </option>
-
-        <option value="Media"
-        <%= filtros.prioridad=="Media"?"selected":"" %>>
-            Media
-        </option>
-
-        <option value="Alta"
-        <%= filtros.prioridad=="Alta"?"selected":"" %>>
-            Alta
-        </option>
-
-    </select>
-
-    <button class="btn btn-primary btn-filtrar">
-
-        <i class="fa-solid fa-filter"></i>
-
-        Filtrar
-
-    </button>
+        </select>
+    </div>
+    <!-- filtro por prioridad -->
+    <div class="col-12 col-sm-6 col-md-2">
+        <select name="prioridad" class="form-select filtro-select">
+            <option value="">Prioridad</option>
+            <option value="Baja" <%= filtros.prioridad=="Baja"?"selected":"" %>>Baja</option>
+            <option value="Media" <%= filtros.prioridad=="Media"?"selected":"" %>>Media</option>
+            <option value="Alta" <%= filtros.prioridad=="Alta"?"selected":"" %>>Alta</option>
+        </select>
+    </div>
+    <!-- filtro por estado -->
+    <div class="col-12 col-sm-6 col-md-2">
+        <select name="estado" class="form-select filtro-select">
+            <option value="">Estado</option>
+            <option value="1" <%= filtros.estado=="1"?"selected":"" %>>Pendiente</option>
+            <option value="2" <%= filtros.estado=="2"?"selected":"" %>>En progreso</option>
+            <option value="3" <%= filtros.estado=="3"?"selected":"" %>>Completada</option>
+            
+        </select>
+        
+    </div>
+    <!-- boton filtrar -->
+    <div class="col-12 col-sm-6 col-md-2 d-grid">
+        <button class="btn btn-primary btn-filtrar">
+            <i class="fa-solid fa-filter"></i> Filtrar
+        </button>
+    </div>
 
 </form>
 
 <!-- Mostrar tareas -->
-<h2>Mis tareas</h2>
+ <br>
+<h2 class="text-center text-md-start"><i class="fa-solid fa-list-check me-2"></i> Mis tareas</h2>
 
 <!-- tareas -->
 <% if (tareas.length === 0) { %>

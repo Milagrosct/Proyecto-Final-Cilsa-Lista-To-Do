@@ -1,6 +1,7 @@
 
 //Logica de negocio para el registro y login de usuarios
 import { crearUsuario, buscarPorEmail } from "../Models/usuario.model.js";
+import bcrypt from "bcrypt"; // para incriptar la contraseña
 //Registro
 export const registrar = async(req,res)=>{
 
@@ -39,11 +40,14 @@ if(password !== confirmPassword){
 
 }
 
+// Encriptar contraseña
+const passwordEncriptada = await bcrypt.hash(password, 10);
+
         await crearUsuario({
             nombre,
             apellido,
             email,
-            password
+            password: passwordEncriptada
         });
 
         req.session.success = "Usuario registrado correctamente.";
@@ -87,12 +91,17 @@ export const login = async(req,res)=>{
 }
 
 
-if(usuario.password !== password){
+    const coincide = await bcrypt.compare(
+    password,
+    usuario.password
+);
 
-    return res.render("login/login", {
-        mensaje: "Contraseña o email incorrecto.",
-        success: null
-    });
+    if(!coincide){
+
+        return res.render("login/login", {
+            mensaje: "Contraseña o email incorrecto.",
+            success: null
+        });
 
 }
 

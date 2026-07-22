@@ -126,6 +126,7 @@ npm start
 Proyecto desarrollado por:
 
 - Milagros Curuchet
+- Leila Galiano
 - Rocío Diogenes 
 
 Como trabajo final del curso **Full Stack Developer - CILSA**.

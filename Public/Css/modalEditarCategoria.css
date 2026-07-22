@@ -1,0 +1,24 @@
+
+.modal-body {
+    background-color: #060e25!important;
+}
+
+.modal-header {
+    background-color: #060e25 !important;
+}
+
+.modal-footer {
+background-color: #060e25 !important;
+}
+
+.btn-guardar{
+background-color: white;
+color: #060e25;
+border: none;
+}
+
+.btn-guardar:hover{
+background-color: #060e25;
+color: white;
+border: none;
+}

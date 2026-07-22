@@ -30,6 +30,7 @@ export const crearUsuario = async (usuario) => {
 
     console.log("Llega al modelo:");
     console.log(usuario);
+    
     const [resultado] = await db.execute(sql,[
         nombre,
         apellido,

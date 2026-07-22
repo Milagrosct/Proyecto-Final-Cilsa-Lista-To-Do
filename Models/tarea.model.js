@@ -89,7 +89,17 @@ export const obtenerMisTareas = async (id_usuario, filtros = {}) => {
         valores.push(filtros.prioridad);
     }
 
+        // Filtro estado
+    if(filtros.estado){
 
+        sql += `
+            AND detalle_tarea.id_estado = ?
+        `;
+
+        valores.push(filtros.estado);
+    }
+    
+    //Ordenar las tareas por fecha de creacion 
     sql += `
         ORDER BY tareas.fecha_creacion DESC
     `;

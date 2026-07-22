@@ -75,7 +75,7 @@
                         </option>
 
                     </select>
-
+                    <!-- FECHAS -->
                     <label class="mt-3">Fecha inicio</label>
 
                     <input
@@ -90,6 +90,7 @@
                         type="datetime-local"
                         name="fecha_vencimiento"
                         class="form-control"
+                        min="<%= new Date().toISOString().slice(0,16) %>"
                         value="<%= tarea.fecha_vencimiento ? new Date(tarea.fecha_vencimiento).toISOString().slice(0,16) : '' %>">
 
                 </div>

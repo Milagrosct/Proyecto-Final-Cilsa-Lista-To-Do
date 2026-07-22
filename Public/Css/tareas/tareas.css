@@ -85,7 +85,7 @@ body{
 
 /* Etiqueta prioridad */
 
-.prioridad{
+/* .prioridad{
     padding:5px 15px;
     border-radius:20px;
     font-weight:bold;
@@ -107,7 +107,7 @@ body{
 .prioridad.baja{
     background:green;
     color:white;
-}
+} */
 
 /* Etiqueta categoria */
 .categoria{
@@ -124,7 +124,7 @@ body{
 
 
 
-.filtros{
+/* .filtros{
 
     display:flex;
 
@@ -136,8 +136,36 @@ body{
 
     flex-wrap:wrap;
 
+} */
+.filtro-select{
+
+    width:100%;
+
+   background-color:#060e25;
+
+    color:white;
+
+    border:1px solid #34344b;
+
+    border-radius:12px;
+
+    padding:12px 15px;
+
+    min-width:180px;
+
+   
+
 }
 
+.filtro-select:focus{
+
+    outline:none;
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 10px rgba(37,99,235,.25);
+
+}
 .busqueda{
 
     flex:1;
@@ -184,7 +212,7 @@ body{
 
 }
 
-.filtros select{
+/* .filtros select{
 
     background:#060e25;
 
@@ -206,7 +234,7 @@ body{
 
     border-color:#2563eb;
 
-}
+} */
 .btn-filtrar{
     background-color: white;
     color: #040e23;

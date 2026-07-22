@@ -28,7 +28,8 @@ export const mostrarTareas = async(req,res)=>{
         const filtros = {
             buscar: req.query.buscar || "",
             categoria: req.query.categoria || "",
-            prioridad: req.query.prioridad || ""
+            prioridad: req.query.prioridad || "",
+            estado: req.query.estado || ""
         };
 
         const tareas = await obtenerMisTareas(
@@ -160,6 +161,18 @@ export const editar = async(req,res)=>{
 
         });
 
+  // validar fechas
+      /*   if(
+            fecha_inicio &&
+            fecha_vencimiento &&
+            fecha_vencimiento < fecha_inicio
+        ){
+
+            return res.status(400).json({
+                mensaje:"La fecha de vencimiento no puede ser anterior"
+            });
+
+        } */
 
         await editarDetalleTarea(id_tarea,{
             prioridad,
