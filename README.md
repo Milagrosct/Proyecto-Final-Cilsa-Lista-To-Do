@@ -14,7 +14,7 @@ TaskFlow es una aplicación web desarrollada con **Node.js, Express, EJS y MySQL
 - Asignar prioridad (Baja, Media o Alta).
 - Definir fecha de inicio y vencimiento.
 - Buscador por nombre o descripción.
-- Filtros por categoría estado y prioridad.
+- Filtros por categoría, estado y prioridad.
 - Panel principal con resumen de tareas pendientes y completadas.
 
 ---
